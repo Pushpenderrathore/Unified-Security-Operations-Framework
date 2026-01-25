@@ -1,2 +1,4 @@
 # Unified-Security-Operations-Framework
-I designed a modular (USOF) SOC framework with multiple security capabilities
+I designed a modular SOC framework with multiple security capabilities.
+
+
