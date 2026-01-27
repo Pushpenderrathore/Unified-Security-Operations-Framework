@@ -15,6 +15,15 @@ def monitor_usb():
         text=True
     )
 
-    for line in process.stdout:
-        if "ID_VENDOR_ID" in line or "ID_MODEL_ID" in line:
-            logger.info(line.strip())
+    try:
+        for line in process.stdout:
+            if "ID_VENDOR_ID" in line or "ID_MODEL_ID" in line:
+                logger.info(line.strip())
+
+    except KeyboardInterrupt:
+        logger.info("USB monitoring stopped by user")
+
+    finally:
+        process.terminate()
+        logger.info("USB monitor process terminated cleanly")
+        print("\n[+] USB monitoring stopped safely")
