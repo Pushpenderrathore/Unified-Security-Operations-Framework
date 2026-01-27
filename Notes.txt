@@ -1,0 +1,161 @@
+🧩 MODULE-WISE TASK LIST
+🔴 MODULE 1: Linux Privilege Escalation Analyzer (CORE)
+
+Goal: Detect misconfigurations, NOT exploit.
+
+Tasks
+
+Enumerate users, groups, kernel, OS
+
+Find SUID/SGID binaries
+
+Check writable cron jobs
+
+Analyze sudo permissions
+
+Detect writable system files
+
+Map findings → known CVE patterns
+
+Generate structured report
+
+Output:
+
+Risk level
+
+Finding type
+
+MITRE ATT&CK mapping
+
+Recommendation
+
+🔴 MODULE 2: Threat Intelligence Aggregator (CORE)
+
+Goal: Enrich indicators with reputation data.
+
+Tasks
+
+IOC input (IP, domain, hash)
+
+AbuseIPDB integration
+
+VirusTotal integration (free tier)
+
+Risk scoring logic
+
+Local cache to avoid API abuse
+
+Export results to JSON/CSV
+
+Output:
+
+Confidence score
+
+Source reputation
+
+Last seen
+
+Threat category
+
+🔴 MODULE 3: Windows Process & Registry Monitor (CORE)
+
+Goal: Detect persistence & suspicious behavior.
+
+Tasks
+
+Monitor running processes
+
+Detect unsigned processes
+
+Registry autorun monitoring
+
+Detect service creation
+
+Persistence technique mapping
+
+Alert generation
+
+Output:
+
+Process/Registry change logs
+
+Alert severity
+
+Persistence type
+
+🟡 MODULE 4: PDF Malware Static Analyzer
+
+Goal: Static indicators only (safe).
+
+Tasks
+
+Extract PDF objects
+
+Detect embedded JavaScript
+
+Identify suspicious keywords
+
+Flag obfuscation patterns
+
+Output indicators list
+
+Output:
+
+Suspicious objects
+
+Risk score
+
+Static verdict
+
+🟡 MODULE 5: USB Device Monitor
+
+Goal: Monitor unauthorized device activity.
+
+Tasks
+
+Detect USB insert/remove events
+
+Capture VID/PID
+
+Timestamp logging
+
+Alert on unknown devices
+
+Output:
+
+Device log
+
+Policy warning
+
+🧠 CORE INFRASTRUCTURE TASKS
+Logging
+
+Central logger
+
+Module-wise log separation
+
+JSON structured logs
+
+CLI
+
+Module selection flags
+
+OS detection
+
+Output format selection
+
+📄 DOCUMENTATION TASKS (DON’T SKIP)
+
+Architecture diagram
+
+Module data flow
+
+MITRE ATT&CK mapping
+
+Ethical boundaries
+
+Future scope
+
+🏁 What mentors will THINK
+
+“This student understands SOC design, modular security tooling, and ethical boundaries.”
