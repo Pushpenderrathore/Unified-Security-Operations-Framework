@@ -1,0 +1,14 @@
+{
+  "summary": {
+    "risk_level": "LOW"
+  },
+  "system_info": {
+    "user": "enp7s0d",
+    "uid": 1000,
+    "kernel": "6.17.10+kali-amd64",
+    "os": "Description:\tKali GNU/Linux Rolling"
+  },
+  "suid_binaries_count": 0,
+  "dangerous_sudo": false,
+  "writable_cron": []
+}
