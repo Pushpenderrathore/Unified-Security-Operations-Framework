@@ -1,26 +1,45 @@
 import argparse
+import json
 from modules.usb_monitor.device_events import monitor_usb
 from modules.pdf_malware.static_scan import scan_pdf
 from modules.pdf_malware.indicators import generate_verdict
 from modules.threat_intel.feeds import check_ip_reputation
 from modules.threat_intel.cache import get_cached_ioc, cache_ioc
 from modules.threat_intel.risk_score import calculate_risk
-
+from modules.linux_privesc.enumerator import get_system_info
+from modules.linux_privesc.misconfig import (
+    find_suid_binaries,
+    check_sudo_permissions,
+    find_writable_cron
+)
+from modules.linux_privesc.report import generate_report
 
 def main():
     parser = argparse.ArgumentParser(description="Unified SOC Framework")
 
     parser.add_argument(
         "--module",
-        choices=["usb_monitor", "pdf_malware", "threat_intel"],
+        choices=["usb_monitor", "pdf_malware", "threat_intel", "linux_privesc"],
         required=True,
         help="Module to run"
     )
 
     parser.add_argument(
         "--file",
-        help="File path or IOC (used by pdf_malware and threat_intel modules)"
+        help="Input target (PDF file path for pdf_malware | IP/Domain for threat_intel)"
     )
+
+    parser.add_argument(
+        "--output",
+        help="Save report to file (JSON format)"
+    )   
+
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="Enable verbose output"
+    )
+
 
     args = parser.parse_args()
 
@@ -62,6 +81,23 @@ def main():
         print("Abuse Confidence:", data["data"]["abuseConfidenceScore"])
         print("Risk Level:", risk)
 
+    # LINUX PRIVESC
+    elif args.module == "linux_privesc":
+        system = get_system_info()
+        suid = find_suid_binaries()
+        sudo_rules = check_sudo_permissions()
+        cron = find_writable_cron()
+
+        report = generate_report(system, suid, sudo_rules, cron)
+
+        print("\n--- Linux Privilege Escalation Report ---")
+        for k, v in report.items():
+            print(f"{k}: {v}")
+        
+        if args.output:
+            with open(args.output, "w") as f:
+                json.dump(report, f, indent=2)
+            print(f"[+] Report saved to {args.output}")
 
 if __name__ == "__main__":
     main()
