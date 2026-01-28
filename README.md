@@ -49,13 +49,13 @@ Primary goals:
 
 ## Architecture (High-Level)
 
-CLI Interface
-  └─ Core Framework (logging, config, utilities)
-      ├─ Linux PrivEsc Analyzer
-      ├─ Threat Intelligence Aggregator
-      ├─ Windows Process & Registry Monitor
-      ├─ PDF Static Analyzer
-      └─ USB Device Monitoring
+CLI Interface        
+  └─ Core Framework (logging, config, utilities)                     
+      ├─ Linux PrivEsc Analyzer     
+      ├─ Threat Intelligence Aggregator     
+      ├─ Windows Process & Registry Monitor     
+      ├─ PDF Static Analyzer      
+      └─ USB Device Monitoring     
 
 (Conceptual diagram)
 ```
