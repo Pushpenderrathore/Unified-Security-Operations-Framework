@@ -44,6 +44,8 @@ Primary goals:
 - Emphasize detection and hardening recommendations
 - Apply real-world cybersecurity concepts (MITRE ATT&CK, IOC analysis)
 - Provide a resume-grade, ethically-bounded security project
+- Some modules and core files are intentionally reserved as future scope
+to demonstrate extensible SOC-oriented architecture.
 
 ---
 
