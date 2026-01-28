@@ -13,3 +13,14 @@
 2026-01-27 20:28:18,324 | INFO | Starting USB device monitoring
 2026-01-27 20:29:15,222 | INFO | USB monitoring stopped by user
 2026-01-27 20:29:15,222 | INFO | USB monitor process terminated cleanly
+2026-01-28 23:10:15,589 | INFO | Starting USB device monitoring
+2026-01-28 23:10:23,805 | INFO | ID_MODEL_ID=ef18
+2026-01-28 23:10:23,805 | INFO | ID_VENDOR_ID=23a9
+2026-01-28 23:10:23,890 | INFO | ID_MODEL_ID=ef18
+2026-01-28 23:10:23,890 | INFO | ID_VENDOR_ID=23a9
+2026-01-28 23:10:48,149 | INFO | ID_MODEL_ID=ef18
+2026-01-28 23:10:48,150 | INFO | ID_VENDOR_ID=23a9
+2026-01-28 23:10:48,202 | INFO | ID_MODEL_ID=ef18
+2026-01-28 23:10:48,202 | INFO | ID_VENDOR_ID=23a9
+2026-01-28 23:10:56,814 | INFO | USB monitoring stopped by user
+2026-01-28 23:10:56,814 | INFO | USB monitor process terminated cleanly
