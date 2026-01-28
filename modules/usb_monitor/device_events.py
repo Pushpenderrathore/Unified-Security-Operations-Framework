@@ -3,9 +3,12 @@ from core.logger import get_logger
 
 logger = get_logger("usb_monitor")
 
-def monitor_usb():
+def monitor_usb(verbose=False):
     logger.info("Starting USB device monitoring")
 
+    if verbose:
+        print("[VERBOSE] USB monitoring started")
+    
     cmd = ["udevadm", "monitor", "--subsystem-match=usb", "--property"]
 
     process = subprocess.Popen(
@@ -19,6 +22,8 @@ def monitor_usb():
         for line in process.stdout:
             if "ID_VENDOR_ID" in line or "ID_MODEL_ID" in line:
                 logger.info(line.strip())
+                if verbose:
+                    print(f"[VERBOSE] {line.strip()}")
 
     except KeyboardInterrupt:
         logger.info("USB monitoring stopped by user")

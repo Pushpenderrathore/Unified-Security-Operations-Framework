@@ -43,10 +43,13 @@ def main():
 
 
     args = parser.parse_args()
+    if args.verbose:
+        print("[*] Verbose mode enabled")
+
 
     # USB MONITOR
     if args.module == "usb_monitor":
-        monitor_usb()
+        monitor_usb(verbose=args.verbose)
 
     # PDF MALWARE ANALYSIS
     elif args.module == "pdf_malware":
