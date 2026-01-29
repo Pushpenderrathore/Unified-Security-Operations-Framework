@@ -1,8 +1,9 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
 ![Security](https://img.shields.io/badge/Focus-Defensive%20Security-important)
 ![SOC](https://img.shields.io/badge/Category-SOC%20Tool-orange)
 ![Ethical](https://img.shields.io/badge/Ethics-Research%20Only-blueviolet)
+![Status](https://img.shields.io/badge/Status-Active-success)
+[![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT%26CK-blue)](https://attack.mitre.org/)
 
 # Unified Modular SOC Framework (Mini-SOC Tool)
 
@@ -277,8 +278,14 @@ Focus: Defensive Security, SOC, Threat Detection
 
 ---
 
-## License
-Include an appropriate open-source license in the repository (e.g., MIT, Apache-2.0) as `LICENSE` if you plan to publish this project.
+## License[![License: MIT](https://img.shields.io/badge/License-MIT-green)](https://github.com/Pushpenderrathore/Unified-Security-Operations-Framework/blob/main/LICENSE)
+
+This project is licensed under the **MIT License**.
+
+This license permits use, modification, and distribution for educational and commercial purposes, provided proper attribution is given.
+
+
+
 
 
 
