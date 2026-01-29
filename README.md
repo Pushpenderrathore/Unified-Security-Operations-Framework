@@ -189,6 +189,40 @@ python run.py --module threat_intel --ioc 8.8.8.8
 python run.py --module windows_monitor
 ```
 
+---
+
+## Screenshots & Sample Output
+
+### CLI Help Interface
+![CLI Help](docs/screenshots/01_cli_help.png)
+*Unified command-line interface showing available SOC modules and options.*
+
+---
+
+### Linux Privilege Escalation Detection
+![Linux PrivEsc](docs/screenshots/02_linux_privesc_output.png)
+*Detection-only analysis of common Linux privilege escalation misconfigurations.*
+
+---
+
+### Generated JSON Report
+![PrivEsc JSON](docs/screenshots/03_privesc_json.png)
+*Structured JSON report suitable for SOC reporting and automation pipelines.*
+
+---
+
+### USB Device Monitoring (Verbose Mode)
+![USB Monitor](docs/screenshots/04_usb_monitor_verbose.png)
+*Real-time USB device monitoring with vendor and product identification.*
+
+---
+
+### Centralized Logging
+![Logs](docs/screenshots/05_logs.png)
+*Timestamped, module-wise logs providing auditability and traceability.*
+
+
+
 Typical output: structured JSON/CSV reports written to `data/reports/` and logs under `data/logs/`.
 
 ---
