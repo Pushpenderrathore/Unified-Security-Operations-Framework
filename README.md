@@ -11,7 +11,7 @@
 
 A modular, detection-first Security Operations Center (SOC) tool focused on defensive capabilities, analysis, and visibility. This framework integrates multiple defensive security modules to help with host-based detection, privilege-escalation misconfiguration analysis, threat intelligence enrichment, malware static analysis, and system activity monitoring.
 
-⚠️ This project is strictly for educational, research, and defensive security purposes. No automated exploitation or offensive payload execution is performed.
+⚠ This project is strictly for educational, research, and defensive security purposes. No automated exploitation or offensive payload execution is performed.
 
 ---
 
@@ -29,6 +29,15 @@ A modular, detection-first Security Operations Center (SOC) tool focused on defe
 - [Project Structure](#project-structure)
 - [Installation & Requirements](#installation--requirements)
 - [Usage](#usage)
+- [Screenshots & Sample Output](#screenshots--sample-output)
+- [Assignment Coverage & Mapping (For Mentors)](#assignment-coverage--mapping-for-mentors)
+  - [Linux PrivEsc Practical Documentation](#1️⃣-linux_privesc_practical_documentationpdf)
+  - [Threat Intelligence Aggregator Documentation](#2️⃣-threat_intelligence_aggregator_documentationpdf)
+  - [PDF Malware Analysis Project](#3️⃣-pdf_malware_analysis_project_documentpdf)
+  - [USB Device Control Monitoring Framework](#4️⃣-usb_device_control_monitoring_frameworkpdf)
+  - [Windows Registry Change Monitoring System](#5️⃣-windows_registry_change_monitoring_systempdf)
+  - [Windows Service Process Monitoring Agent](#6️⃣-windows_service_process_monitoring_agentpdf)
+  - [Secure File Transfer / SentinelShield / Encoder](#7️⃣-secure_file_transfer--sentinelshield--encoder-frameworks)
 - [Configuration & API Keys](#configuration--api-keys)
 - [Ethical Boundaries & Disclaimer](#ethical-boundaries--disclaimer)
 - [Limitations](#limitations)
@@ -138,7 +147,7 @@ Features:
 - Keyword-based risk indicators
 - Obfuscation pattern flags
 
-⚠️ No sandboxing or dynamic behavioral analysis is performed.
+⚠ No sandboxing or dynamic behavioral analysis is performed.
 
 ---
 
@@ -201,14 +210,52 @@ python run.py --module linux_privesc
 python run.py --module threat_intel --ioc 8.8.8.8
 python run.py --module windows_monitor
 ```
-
 ---
 
 ## Screenshots & Sample Output
 
+### CLI Help Interface
+![CLI Help](docs/screenshots/01_cli_help.png)
+*Unified command-line interface showing available SOC modules and options.*
+
 ---
 
-## 📌 Assignment Coverage & Mapping (For Mentors)
+### Linux Privilege Escalation Detection
+![Linux PrivEsc](docs/screenshots/02_linux_privesc_output.png)
+*Detection-only analysis of common Linux privilege escalation misconfigurations.*
+
+---
+
+### Generated JSON Report
+![PrivEsc JSON](docs/screenshots/03_privesc_json.png)
+*Structured JSON report suitable for SOC reporting and automation pipelines.*
+
+---
+
+### USB Device Monitoring (Verbose Mode)
+![USB Monitor](docs/screenshots/04_usb_monitor_verbose.png)
+*Real-time USB device monitoring with vendor and product identification.*
+
+---
+
+### Centralized Logging
+![Logs](docs/screenshots/05_logs.png)
+*Timestamped, module-wise logs providing auditability and traceability.*
+
+
+
+Typical output: structured JSON/CSV reports written to `data/reports/` and logs under `data/logs/`.
+
+---
+
+## Configuration & API Keys
+- Store API keys and configuration in a config file (example: `core/config.example.yml`).
+- Never commit real API keys. Use environment variables or an encrypted vault for sensitive values.
+- The Threat Intelligence Aggregator supports caching; set cache paths and TTL in the configuration.
+
+---
+
+## Assignment Coverage & Mapping (For Mentors)
 
 This project intentionally consolidates multiple SOC internship assignments into **one unified, modular SOC framework**, reflecting how real-world Security Operations Centers operate (single platform, multiple detection modules).
 
@@ -337,6 +384,7 @@ This unified approach **exceeds baseline expectations** by modeling real SOC env
 
 This project consolidates multiple SOC internship assignments into a single unified framework.  
 Each assignment is implemented as an independent detection module, including Linux PrivEsc analysis, Threat Intelligence aggregation, PDF malware static analysis, USB monitoring, and planned Windows monitoring components.
+- Some modules are PoC-level and may require hardening for production use.
 
 This design mirrors real-world SOC platforms where multiple detections operate under one centralized system.
 
@@ -345,39 +393,6 @@ This design mirrors real-world SOC platforms where multiple detections operate u
 ### 📝 Suggested Submission Explanation (Optional)
 
 > “Instead of submitting separate projects, I designed a unified SOC framework where each assignment is implemented as an independent module. This reflects real SOC environments where multiple detection capabilities operate under a single platform.”
-
-
-### CLI Help Interface
-![CLI Help](docs/screenshots/01_cli_help.png)
-*Unified command-line interface showing available SOC modules and options.*
-
----
-
-### Linux Privilege Escalation Detection
-![Linux PrivEsc](docs/screenshots/02_linux_privesc_output.png)
-*Detection-only analysis of common Linux privilege escalation misconfigurations.*
-
----
-
-### Generated JSON Report
-![PrivEsc JSON](docs/screenshots/03_privesc_json.png)
-*Structured JSON report suitable for SOC reporting and automation pipelines.*
-
----
-
-### USB Device Monitoring (Verbose Mode)
-![USB Monitor](docs/screenshots/04_usb_monitor_verbose.png)
-*Real-time USB device monitoring with vendor and product identification.*
-
----
-
-### Centralized Logging
-![Logs](docs/screenshots/05_logs.png)
-*Timestamped, module-wise logs providing auditability and traceability.*
-
-
-
-Typical output: structured JSON/CSV reports written to `data/reports/` and logs under `data/logs/`.
 
 ---
 
@@ -399,15 +414,14 @@ This tool is developed strictly for educational and research purposes. The autho
 
 ## Limitations
 - Not a full-scale SOC platform — a modular proof-of-concept.
-- Some modules are PoC-level and may require hardening for production use.
 - API integrations are subject to free-tier limitations and rate limits.
 - Malware analysis is static only (no dynamic sandboxing).
 
 ---
+- SIEM / log ingestion integration
 
 ## Future Scope
 - Web-based dashboard and visualization
-- SIEM / log ingestion integration
 - Additional threat intelligence feeds
 - Behavioral anomaly detection and analytics
 - Optional remediation suggestion workflows
