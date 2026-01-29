@@ -1,3 +1,9 @@
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Security](https://img.shields.io/badge/Focus-Defensive%20Security-important)
+![SOC](https://img.shields.io/badge/Category-SOC%20Tool-orange)
+![Ethical](https://img.shields.io/badge/Ethics-Research%20Only-blueviolet)
+
 # Unified Modular SOC Framework (Mini-SOC Tool)
 
 A modular, detection-first Security Operations Center (SOC) tool focused on defensive capabilities, analysis, and visibility. This framework integrates multiple defensive security modules to help with host-based detection, privilege-escalation misconfiguration analysis, threat intelligence enrichment, malware static analysis, and system activity monitoring.
