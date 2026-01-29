@@ -57,6 +57,10 @@ to demonstrate extensible SOC-oriented architecture.
 
 ## Architecture (High-Level)
 
+![Unified SOC Framework Architecture](docs/screenshots/architecture.png)
+
+*High-level architecture of the Unified Modular SOC Framework showing the CLI dispatcher, core framework, and modular detection components.*
+
 CLI Interface        
   └─ Core Framework (logging, config, utilities)                     
       ├─ Linux PrivEsc Analyzer     
