@@ -1,4 +1,6 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![CI](https://github.com/Pushpenderrathore/Unified-Security-Operations-Framework/actions/workflows/python-app.yml/badge.svg)
+
 ![Security](https://img.shields.io/badge/Focus-Defensive%20Security-important)
 ![SOC](https://img.shields.io/badge/Category-SOC%20Tool-orange)
 ![Ethical](https://img.shields.io/badge/Ethics-Research%20Only-blueviolet)
