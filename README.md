@@ -31,13 +31,13 @@ A modular, detection-first Security Operations Center (SOC) tool focused on defe
 - [Usage](#usage)
 - [Screenshots & Sample Output](#screenshots--sample-output)
 - [Assignment Coverage & Mapping (For Mentors)](#assignment-coverage--mapping-for-mentors)
-  - [Linux PrivEsc Practical Documentation](#1️⃣-linux_privesc_practical_documentationpdf)
-  - [Threat Intelligence Aggregator Documentation](#2️⃣-threat_intelligence_aggregator_documentationpdf)
-  - [PDF Malware Analysis Project](#3️⃣-pdf_malware_analysis_project_documentpdf)
-  - [USB Device Control Monitoring Framework](#4️⃣-usb_device_control_monitoring_frameworkpdf)
-  - [Windows Registry Change Monitoring System](#5️⃣-windows_registry_change_monitoring_systempdf)
-  - [Windows Service Process Monitoring Agent](#6️⃣-windows_service_process_monitoring_agentpdf)
-  - [Secure File Transfer / SentinelShield / Encoder](#7️⃣-secure_file_transfer--sentinelshield--encoder-frameworks)
+  - [Linux PrivEsc Practical Documentation](#linux_privesc_practical_documentationpdf)
+  - [Threat Intelligence Aggregator Documentation](#threat_intelligence_aggregator_documentationpdf)
+  - [PDF Malware Analysis Project](#pdf_malware_analysis_project_documentpdf)
+  - [USB Device Control Monitoring Framework](#usb_device_control_monitoring_frameworkpdf)
+  - [Windows Registry Change Monitoring System](#windows_registry_change_monitoring_systempdf)
+  - [Windows Service Process Monitoring Agent](#windows_service_process_monitoring_agentpdf)
+  - [Secure File Transfer / SentinelShield / Encoder](#secure_file_transfer--sentinelshield--encoder-frameworks)
 - [Configuration & API Keys](#configuration--api-keys)
 - [Ethical Boundaries & Disclaimer](#ethical-boundaries--disclaimer)
 - [Limitations](#limitations)
@@ -263,7 +263,7 @@ Below is a clear, assignment-by-assignment mapping to demonstrate full coverage.
 
 ---
 
-### 1️⃣ Linux_PrivEsc_Practical_Documentation.pdf  
+### Linux_PrivEsc_Practical_Documentation.pdf  
 **Status:** ✔ Covered (Direct Match)
 
 **Implemented in:** `modules/linux_privesc`
@@ -279,7 +279,7 @@ Below is a clear, assignment-by-assignment mapping to demonstrate full coverage.
 
 ---
 
-### 2️⃣ Threat_Intelligence_Aggregator_Documentation.pdf  
+### Threat_Intelligence_Aggregator_Documentation.pdf  
 **Status:** ✔ Covered (Direct Match)
 
 **Implemented in:** `modules/threat_intel`
@@ -295,7 +295,7 @@ Below is a clear, assignment-by-assignment mapping to demonstrate full coverage.
 
 ---
 
-### 3️⃣ PDF_Malware_Analysis_Project_Document.pdf  
+### PDF_Malware_Analysis_Project_Document.pdf  
 **Status:** ✔ Covered (Direct Match)
 
 **Implemented in:** `modules/pdf_malware`
@@ -310,7 +310,7 @@ Below is a clear, assignment-by-assignment mapping to demonstrate full coverage.
 
 ---
 
-### 4️⃣ USB_Device_Control_Monitoring_Framework.pdf  
+### USB_Device_Control_Monitoring_Framework.pdf  
 **Status:** ✔ Covered (Direct Match)
 
 **Implemented in:** `modules/usb_monitor`
@@ -325,7 +325,7 @@ Below is a clear, assignment-by-assignment mapping to demonstrate full coverage.
 
 ---
 
-### 5️⃣ Windows_Registry_Change_Monitoring_System.pdf  
+### Windows_Registry_Change_Monitoring_System.pdf  
 **Status:** 🟡 Partially Covered (Planned Module)
 
 **Implemented structure:** `modules/windows_monitor`
@@ -339,7 +339,7 @@ Below is a clear, assignment-by-assignment mapping to demonstrate full coverage.
 
 ---
 
-### 6️⃣ Windows_Service_Process_Monitoring_Agent.pdf  
+### Windows_Service_Process_Monitoring_Agent.pdf  
 **Status:** 🟡 Planned (Future Scope)
 
 **Details:**
@@ -351,7 +351,7 @@ Below is a clear, assignment-by-assignment mapping to demonstrate full coverage.
 
 ---
 
-### 7️⃣ Secure_File_Transfer / SentinelShield / Encoder Frameworks  
+### Secure_File_Transfer / SentinelShield / Encoder Frameworks  
 **Status:** 🟡 Conceptual Coverage (Architectural)
 
 **Covered via:**
@@ -365,7 +365,7 @@ Below is a clear, assignment-by-assignment mapping to demonstrate full coverage.
 
 ---
 
-## 🔎 Important Clarification for Evaluation
+## Important Clarification for Evaluation
 
 - Unified Mentor does **not** require each assignment to be submitted as a separate repository  
 - Evaluation focuses on **learning outcomes, implementation quality, and SOC concepts**
@@ -380,7 +380,7 @@ This unified approach **exceeds baseline expectations** by modeling real SOC env
 
 ---
 
-## 🧠 Assignment Coverage Note
+## Assignment Coverage Note
 
 This project consolidates multiple SOC internship assignments into a single unified framework.  
 Each assignment is implemented as an independent detection module, including Linux PrivEsc analysis, Threat Intelligence aggregation, PDF malware static analysis, USB monitoring, and planned Windows monitoring components.
@@ -390,7 +390,7 @@ This design mirrors real-world SOC platforms where multiple detections operate u
 
 ---
 
-### 📝 Suggested Submission Explanation (Optional)
+### Suggested Submission Explanation (Optional)
 
 > “Instead of submitting separate projects, I designed a unified SOC framework where each assignment is implemented as an independent module. This reflects real SOC environments where multiple detection capabilities operate under a single platform.”
 
