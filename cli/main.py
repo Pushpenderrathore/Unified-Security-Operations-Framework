@@ -8,6 +8,7 @@ from modules.threat_intel.cache import get_cached_ioc, cache_ioc
 from modules.threat_intel.risk_score import calculate_risk
 from modules.threat_intel.report import generate_report as ti_generate_report
 from modules.linux_privesc.enumerator import get_system_info
+from modules.linux_privesc.exploit_mapper import classify_suid_binaries
 from modules.linux_privesc.misconfig import (
     find_suid_binaries,
     check_sudo_permissions,
