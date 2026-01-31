@@ -109,22 +109,27 @@ def main():
     elif args.module == "linux_privesc":
         system = get_system_info()
 
-        suid_list = find_suid_binaries()              # raw list
-        suid_analysis = classify_suid_binaries(suid_list)  # ✅ GTFOBins mapping
-
+        # 🔥 ADD THIS WARNING HERE
+        if system["uid"] == 0:
+            print("[!] Running as root: privilege escalation checks reflect persistence risk")
+    
+        suid_list = find_suid_binaries()
+        suid_analysis = classify_suid_binaries(suid_list)
+    
         sudo_rules = check_sudo_permissions()
         cron = find_writable_cron()
-
+    
         report = privesc_generate_report(
             system,
-            suid_analysis,  
+            suid_analysis,
             sudo_rules,
             cron
         )
-
+    
         print("\n--- Linux Privilege Escalation Report ---")
         for k, v in report.items():
             print(f"{k}: {v}")
+
 
         if args.output:
             with open(args.output, "w") as f:
