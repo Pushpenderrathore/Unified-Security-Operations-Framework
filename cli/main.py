@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 
 from modules.usb_monitor.device_events import monitor_usb
 from modules.pdf_malware.static_scan import scan_pdf
@@ -20,19 +21,34 @@ from modules.linux_privesc.misconfig import (
 from modules.linux_privesc.report import generate_report as privesc_generate_report
 
 
+def save_output(report, path):
+    with open(path, "w") as f:
+        json.dump(report, f, indent=2)
+    print(f"[+] Report saved to {path}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Unified SOC Framework")
 
     parser.add_argument(
         "--module",
-        choices=[ "linux_privesc", "threat_intel", "pdf_malware", "usb_monitor", "file_transfer", "windows_process", "windows_registry", "web_ids"],
+        choices=[
+            "linux_privesc",
+            "threat_intel",
+            "pdf_malware",
+            "usb_monitor",
+            "file_transfer",
+            "windows_process",
+            "windows_registry",
+            "web_ids"
+        ],
         required=True,
         help="Module to run"
     )
 
     parser.add_argument(
         "--file",
-        help="Input target (PDF file path for pdf_malware | IP/Domain for threat_intel)"
+        help="Input file (PDF / IOC / log / request dump)"
     )
 
     parser.add_argument(
@@ -55,7 +71,10 @@ def main():
     # USB MONITOR
     # =========================
     if args.module == "usb_monitor":
-        monitor_usb(verbose=args.verbose)
+        events = monitor_usb(verbose=args.verbose)
+
+        if args.output and events is not None:
+            save_output(events, args.output)
 
     # =========================
     # PDF MALWARE ANALYSIS
@@ -68,16 +87,105 @@ def main():
         findings = scan_pdf(args.file)
         verdict = generate_verdict(findings)
 
+        report = {
+            "file": args.file,
+            "findings": findings,
+            "verdict": verdict
+        }
+
         print("\n--- PDF Malware Scan Result ---")
-        print("Findings:", findings)
-        print("Verdict:", verdict)
+        print(json.dumps(report, indent=2))
+
+        if args.output:
+            save_output(report, args.output)
+
+    # =========================
+    # FILE TRANSFER MONITOR
+    # =========================
+    elif args.module == "file_transfer":
+        from modules.file_transfer_monitor.watcher import start
+        from modules.file_transfer_monitor.report import generate_report
+
+        print("[*] Monitoring file transfers (CTRL+C to stop)...")
+
+        try:
+            events = start("/tmp")
+        except KeyboardInterrupt:
+            print("\n[*] Stopping monitor...")
+
+        report = generate_report(events)
+        print(json.dumps(report, indent=2))
+
+        if args.output:
+            save_output(report, args.output)
+
+    # =========================
+    # WEB IDS
+    # =========================
+    elif args.module == "web_ids":
+        from modules.web_ids.rules import detect_attack
+
+        payload = ""
+        if args.file:
+            with open(args.file, "r", errors="ignore") as f:
+                payload = f.read()
+
+        alerts = detect_attack(payload)
+        report = {
+            "alerts": alerts,
+            "total_alerts": len(alerts)
+        }
+
+        print(json.dumps(report, indent=2))
+
+        if args.output:
+            save_output(report, args.output)
+
+    # =========================
+    # WINDOWS PROCESS MONITOR
+    # =========================
+    elif args.module == "windows_process":
+        if os.name != "nt":
+            print("[!] windows_process module can run only on Windows")
+            return
+
+        from modules.windows_monitor.process_monitor.process_tree import (
+            detect_suspicious_parent_child
+        )
+
+        alerts = detect_suspicious_parent_child()
+        report = {
+            "suspicious_process_chains": alerts,
+            "count": len(alerts)
+        }
+
+        print(json.dumps(report, indent=2))
+
+        if args.output:
+            save_output(report, args.output)
+
+    # =========================
+    # WINDOWS REGISTRY MONITOR
+    # =========================
+    elif args.module == "windows_registry":
+        if os.name != "nt":
+            print("[!] windows_registry module can run only on Windows")
+            return
+
+        from modules.windows_monitor.registry_monitor.monitor import monitor_registry
+
+        report = monitor_registry()
+        print(json.dumps(report, indent=2))
+
+        if args.output:
+            save_output(report, args.output)
 
     # =========================
     # THREAT INTELLIGENCE
     # =========================
     elif args.module == "threat_intel":
         if not args.file:
-            print("[!] Error: Provide IOC (IP/domain) using --file")
+            print("[!] Error: Provide IOC using --file")
             return
 
         cached = get_cached_ioc(args.file)
@@ -95,46 +203,37 @@ def main():
         report = ti_generate_report(args.file, data, risk)
 
         print("\n--- Threat Intelligence Report ---")
-        for k, v in report.items():
-            print(f"{k}: {v}")
+        print(json.dumps(report, indent=2))
 
         if args.output:
-            with open(args.output, "w") as f:
-                json.dump(report, f, indent=2)
-            print(f"[+] Report saved to {args.output}")
+            save_output(report, args.output)
 
     # =========================
-    # LINUX PRIVILEGE ESCALATION (FIXED)
+    # LINUX PRIVILEGE ESCALATION
     # =========================
     elif args.module == "linux_privesc":
         system = get_system_info()
 
-        # 🔥 ADD THIS WARNING HERE
         if system["uid"] == 0:
-            print("[!] Running as root: privilege escalation checks reflect persistence risk")
-    
+            print("[!] Running as root: checks reflect persistence risk")
+
         suid_list = find_suid_binaries()
         suid_analysis = classify_suid_binaries(suid_list)
-    
         sudo_rules = check_sudo_permissions()
         cron = find_writable_cron()
-    
+
         report = privesc_generate_report(
             system,
             suid_analysis,
             sudo_rules,
             cron
         )
-    
-        print("\n--- Linux Privilege Escalation Report ---")
-        for k, v in report.items():
-            print(f"{k}: {v}")
 
+        print("\n--- Linux Privilege Escalation Report ---")
+        print(json.dumps(report, indent=2))
 
         if args.output:
-            with open(args.output, "w") as f:
-                json.dump(report, f, indent=2)
-            print(f"[+] Report saved to {args.output}")
+            save_output(report, args.output)
 
 
 if __name__ == "__main__":

@@ -1,15 +1,18 @@
 import time
 
-REQUESTS = {}
-LIMIT = 10
+WINDOW = 60
+LIMIT = 20
+BUCKET = {}
+
 
 def allow(ip):
     now = time.time()
-    REQUESTS.setdefault(ip, [])
-    REQUESTS[ip] = [t for t in REQUESTS[ip] if now - t < 60]
+    BUCKET.setdefault(ip, [])
+    BUCKET[ip] = [t for t in BUCKET[ip] if now - t < WINDOW]
 
-    if len(REQUESTS[ip]) >= LIMIT:
+    if len(BUCKET[ip]) >= LIMIT:
         return False
 
-    REQUESTS[ip].append(now)
+    BUCKET[ip].append(now)
     return True
+
