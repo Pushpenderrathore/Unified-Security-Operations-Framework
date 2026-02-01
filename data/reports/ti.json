@@ -1,0 +1,8 @@
+{
+  "ioc": "8.8.8.8",
+  "source": "AbuseIPDB",
+  "abuse_confidence_score": 0,
+  "country": "US",
+  "isp": "Google LLC",
+  "risk_level": "LOW RISK"
+}
