@@ -25,7 +25,7 @@ def main():
 
     parser.add_argument(
         "--module",
-        choices=["usb_monitor", "pdf_malware", "threat_intel", "linux_privesc"],
+        choices=[ "linux_privesc", "threat_intel", "pdf_malware", "usb_monitor", "file_transfer", "windows_process", "windows_registry", "web_ids"],
         required=True,
         help="Module to run"
     )
