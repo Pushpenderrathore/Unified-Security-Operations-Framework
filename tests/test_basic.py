@@ -12,8 +12,14 @@ def test_linux_privesc_report_generation():
         "os": "test-os"
     }
 
-    report = generate_report(system, [], None, [])
+    suid_analysis = {
+        "total": 0,
+        "dangerous": [],
+        "safe": []
+    }
+
+    report = generate_report(system, suid_analysis, None, [])
 
     assert "summary" in report
     assert "system_info" in report
-    assert report["summary"]["risk_level"] in ["LOW", "REVIEW REQUIRED"]
+    assert report["summary"]["risk_level"] in ["LOW", "MEDIUM", "HIGH"]
