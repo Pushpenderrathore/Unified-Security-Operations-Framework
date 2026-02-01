@@ -3,3 +3,5 @@ data/cache/
 data/logs/
 venv/
 *.pyc
+.help
+project_source_dump.txt
