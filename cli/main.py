@@ -84,7 +84,15 @@ def main():
             print("[!] Error: --file argument is required for pdf_malware")
             return
 
-        findings = scan_pdf(args.file)
+        try:
+            findings = scan_pdf(args.file)
+        except FileNotFoundError:
+            print(f"[!] PDF file not found: {args.file}")
+            return
+        except Exception as e:
+            print(f"[!] PDF scan failed: {e}")
+            return
+
         verdict = generate_verdict(findings)
 
         report = {
@@ -98,6 +106,7 @@ def main():
 
         if args.output:
             save_output(report, args.output)
+
 
     # =========================
     # FILE TRANSFER MONITOR
