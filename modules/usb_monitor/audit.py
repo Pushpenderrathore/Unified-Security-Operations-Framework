@@ -1,6 +1,10 @@
-def log_usb_event(device_id, action):
+import datetime
+
+def log_event(device_id, authorized):
     return {
         "device_id": device_id,
-        "action": action,
-        "status": "BLOCKED" if action == "unauthorized" else "ALLOWED"
+        "authorized": authorized,
+        "status": "ALLOWED" if authorized else "BLOCKED",
+        "timestamp": datetime.datetime.utcnow().isoformat() + "Z"
     }
+
