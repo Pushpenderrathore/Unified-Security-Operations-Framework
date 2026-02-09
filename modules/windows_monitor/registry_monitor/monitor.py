@@ -1,10 +1,6 @@
 import os
 import json
-import winreg
 import datetime
-
-if os.name != "nt":
-    raise RuntimeError("Windows only")
 
 KEYS = [
     r"Software\\Microsoft\\Windows\\CurrentVersion\\Run",
@@ -15,6 +11,8 @@ BASELINE_FILE = "data/registry_baseline.json"
 
 
 def snapshot_registry():
+    import winreg  # ✅ moved inside function (CRITICAL)
+
     data = {}
     for key_path in KEYS:
         try:
@@ -35,6 +33,9 @@ def snapshot_registry():
 
 
 def monitor_registry():
+    if os.name != "nt":
+        raise RuntimeError("Windows only")  # ✅ runtime check, CI-safe
+
     old = {}
     if os.path.exists(BASELINE_FILE):
         with open(BASELINE_FILE) as f:
