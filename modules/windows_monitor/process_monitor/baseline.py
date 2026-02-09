@@ -1,4 +1,3 @@
-import winreg
 import json
 
 KEYS = [
@@ -6,6 +5,8 @@ KEYS = [
 ]
 
 def capture_baseline(output="registry_baseline.json"):
+    import winreg  # ✅ moved inside function
+
     snapshot = {}
 
     for key_path in KEYS:
@@ -28,3 +29,4 @@ def capture_baseline(output="registry_baseline.json"):
         json.dump(snapshot, f, indent=2)
 
     return snapshot
+
