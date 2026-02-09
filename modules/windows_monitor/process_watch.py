@@ -1,10 +1,6 @@
 import os
-import psutil
 import time
 import hashlib
-
-if os.name != "nt":
-    raise RuntimeError("Windows only")
 
 KNOWN = set()
 
@@ -20,6 +16,11 @@ def hash_exe(path):
 
 
 def watch_processes(interval=3):
+    if os.name != "nt":
+        raise RuntimeError("Windows only")  # ✅ runtime check
+
+    import psutil  # ✅ moved inside function
+
     alerts = []
 
     while True:
