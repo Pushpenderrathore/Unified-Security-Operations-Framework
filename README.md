@@ -396,13 +396,6 @@ This design mirrors real-world SOC platforms where multiple detections operate u
 
 ---
 
-## Configuration & API Keys
-- Store API keys and configuration in a config file (example: `core/config.example.yml`).
-- Never commit real API keys. Use environment variables or an encrypted vault for sensitive values.
-- The Threat Intelligence Aggregator supports caching; set cache paths and TTL in the configuration.
-
----
-
 ## Ethical Boundaries & Disclaimer
 - No automated exploitation or offensive payload delivery is included.
 - No credential harvesting or unauthorized access techniques are implemented.
