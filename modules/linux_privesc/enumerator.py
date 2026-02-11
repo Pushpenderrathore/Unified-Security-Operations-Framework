@@ -1,12 +1,14 @@
 import os
 import subprocess
+import getpass
+
 from core.logger import get_logger
 
 logger = get_logger("linux_privesc")
 
 def get_system_info():
     info = {}
-    info["user"] = os.getlogin()
+    info["user"] = getpass.getuser()
     info["uid"] = os.getuid()
 
     try:
